@@ -56,7 +56,7 @@ Files, browsing, external apps, persistence, and independent testing depend on t
 
 ## Evidence and development
 
-See [validation](docs/VALIDATION.md) for executed checks and limitations, and [foundations](docs/FOUNDATIONS.md) for source provenance. Evaluation inputs are synthetic, and private interview state is excluded.
+See [validation](docs/VALIDATION.md) for executed checks and limitations, and [foundations](docs/FOUNDATIONS.md) for source provenance. Evaluations use synthetic inputs. Baseline source snapshots, full response logs, and private interview state remain local; the repository includes synthetic test definitions and summarized validation evidence.
 
 `python3 scripts/package.py` (Python 3.9+) rebuilds the portable prompt and installable ZIP; `python3 scripts/package.py --check` checks for drift, local links, and package integrity. Python is needed only for maintaining packages, not for using the skill.
 
