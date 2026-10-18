@@ -1,12 +1,5 @@
-# Private prompt-builder evaluation suite
+# Synthetic validation records
 
-Frozen design for 9 behavioral cases and 6 independent activation cases. No runs have been performed by this package's designer.
+These files contain synthetic test definitions, fixed grading criteria, source hashes, and summarized evaluation results for Adaptive Prompt Builder. They contain no user interview transcript or credentials.
 
-- `inputs.json`: executor-safe synthetic inputs and orchestration protocol; no expected answers.
-- `cases.json`: private checklists, question budgets, critical failures, and activation labels.
-- `rubric.md`: private grading, comparison, evidence, and release gates.
-- `FREEZE.json`: content hashes and design provenance.
-
-Use an independent executor for each baseline/candidate case and an independent grader. Give executors only their selected input and assigned guidance. B01 is a controlled three-turn script; B03/B04 contain explicitly authored fixed history. Replace `{{CASE_OUTPUT_DIR}}` in B08/B09 with fresh isolated absolute directories inside the authorized run-output area. Read actual artifacts when grading.
-
-Do not give private evaluator files to the candidate author or executor. “Held out” remains conditional on that separation. Keep the original frozen files intact; save later run outputs and any evaluation-design revision separately.
+The baseline and earlier-candidate source snapshots, full model replies, and temporary generated test artifacts remain local. See [the validation report](../docs/VALIDATION.md) for the results and limits. The grading records describe actual model executions; fixed histories in the input fixtures are authored test data.
