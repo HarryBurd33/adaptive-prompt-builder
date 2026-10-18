@@ -1,0 +1,10 @@
+{
+  "broken_reference_rejected": {
+    "exit_code": 1,
+    "message": "Broken or escaping skill link: SKILL.md: references/does-not-exist.md"
+  },
+  "portable_drift_rejected": {
+    "exit_code": 1,
+    "message": "Generated file drift: portable/adaptive-prompt-builder.md"
+  }
+}

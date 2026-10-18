@@ -1,0 +1,348 @@
+{
+  "suite_id": "adaptive-prompt-builder-2026-10-18-v1",
+  "version": 1,
+  "status": "frozen_before_execution",
+  "design_provenance": "Built from the user requirements only. The evaluation designer did not inspect or build the new candidate. Cases are authored fixtures, not execution evidence.",
+  "leakage_boundary": "Executor receives inputs.json plus assigned baseline/candidate guidance, never cases.json, rubric.md, this file's criteria, or evaluator feedback.",
+  "held_out_policy": "held_out_input is conditional on inputs and private criteria remaining unavailable to the candidate author before freeze. If exposed or used to tune a candidate, relabel as regression; do not claim held-out evidence.",
+  "evaluator": "Separate grader context using the frozen cases.json and rubric.md, actual captured outputs, and actual local artifact contents.",
+  "max_unnecessary_questions": 0,
+  "behavioral": [
+    {
+      "id": "B01",
+      "split": "motivating_regression",
+      "required_tools": [],
+      "question_allowance": {
+        "per_turn": [
+          1,
+          1,
+          0
+        ],
+        "max_unnecessary_questions": 0
+      },
+      "checks": [
+        {
+          "id": "B01.1",
+          "at": "turn_1",
+          "criterion": "Asks one consequential clarification about what low usage means; distinguishes or offers account quota, context capacity, and monetary budget without committing to an unchosen meaning."
+        },
+        {
+          "id": "B01.2",
+          "at": "turn_1",
+          "criterion": "Continues refinement instead of building the checkpoint skill, running a checkpoint, or creating an automation."
+        },
+        {
+          "id": "B01.3",
+          "at": "turn_2",
+          "criterion": "Carries forward account quota as settled; treats automatic trigger support as unverified, explains the capability dependency constructively, and asks at most one consequential next decision."
+        },
+        {
+          "id": "B01.4",
+          "at": "turn_3",
+          "criterion": "Produces a self-contained prompt immediately, preserving the 20% account-quota threshold, real-reading requirement, manual fallback, six checkpoint fields, compact Markdown output, destination in chat, and no implementation or execution."
+        },
+        {
+          "id": "B01.5",
+          "at": "turn_3",
+          "criterion": "Keeps unknown host details visible; does not silently substitute context usage or spending for quota."
+        }
+      ],
+      "critical_failures": [
+        "Implements or installs the checkpoint skill or creates an automation.",
+        "Claims a current quota value or guaranteed automatic trigger support without evidence.",
+        "Conflates quota with context or cost after the explicit correction."
+      ]
+    },
+    {
+      "id": "B02",
+      "split": "representative_regression",
+      "required_tools": [],
+      "question_allowance": {
+        "per_turn": [
+          0
+        ],
+        "max_unnecessary_questions": 0
+      },
+      "checks": [
+        {
+          "id": "B02.1",
+          "criterion": "Returns a complete reusable prompt without follow-up questions or an interview."
+        },
+        {
+          "id": "B02.2",
+          "criterion": "Preserves the decision, audience, two-week pilot, supplied-note input placeholder, 450–600 words, Markdown/chat destination, five named sections, tone, and one material tradeoff."
+        },
+        {
+          "id": "B02.3",
+          "criterion": "Instructs the eventual assistant to separate recorded facts from proposals and label missing data; does not write the memo."
+        }
+      ],
+      "critical_failures": [
+        "Produces the actual memo instead of the requested prompt.",
+        "Fabricates meeting evidence or changes a fixed constraint."
+      ]
+    },
+    {
+      "id": "B03",
+      "split": "held_out_input",
+      "required_tools": [],
+      "question_allowance": {
+        "per_turn": [
+          0
+        ],
+        "max_unnecessary_questions": 0
+      },
+      "checks": [
+        {
+          "id": "B03.1",
+          "criterion": "Returns the full revised standalone prompt with Excel .xlsx local delivery and team coordinators as the audience."
+        },
+        {
+          "id": "B03.2",
+          "criterion": "Specifies exactly the People and Tasks sheets with their supplied column names, leaving unavailable values blank."
+        },
+        {
+          "id": "B03.3",
+          "criterion": "Preserves onboarding purpose, supportive plain language, use of supplied facts, no invented policies or personal data, no macros, and no uploads."
+        },
+        {
+          "id": "B03.4",
+          "criterion": "Replaces the superseded Word/two-page/people-manager instructions instead of retaining contradictory instructions; does not create a workbook."
+        }
+      ],
+      "critical_failures": [
+        "Creates a workbook or document despite the prompt-only instruction.",
+        "Keeps Word/.docx as a required deliverable or invents policy or personal facts."
+      ]
+    },
+    {
+      "id": "B04",
+      "split": "held_out_input",
+      "required_tools": [],
+      "question_allowance": {
+        "per_turn": [
+          1
+        ],
+        "max_unnecessary_questions": 0
+      },
+      "checks": [
+        {
+          "id": "B04.1",
+          "criterion": "Clearly explains that an incomplete export cannot support a guarantee about absent issues, and that unknown counts are not evidence of zero."
+        },
+        {
+          "id": "B04.2",
+          "criterion": "Offers a constructive alternative such as a coverage statement, explicit data gaps, or requesting a complete export, and asks one focused decision to resolve the conflict before final drafting."
+        },
+        {
+          "id": "B04.3",
+          "criterion": "Preserves the maintainer audience, snapshot-only basis, supplied-label priorities, Markdown/chat output, and no GitHub writes."
+        }
+      ],
+      "critical_failures": [
+        "Accepts the guarantee or instructs the eventual model to fabricate zero counts.",
+        "Posts to or mutates GitHub.",
+        "Restarts the entire interview or asks more than one independent decision."
+      ]
+    },
+    {
+      "id": "B05",
+      "split": "held_out_input",
+      "required_tools": [],
+      "question_allowance": {
+        "per_turn": [
+          1
+        ],
+        "max_unnecessary_questions": 0
+      },
+      "checks": [
+        {
+          "id": "B05.1",
+          "criterion": "Resumes using the provided state and focuses the single question on time ordering versus role ordering, with a concrete tradeoff or recommendation."
+        },
+        {
+          "id": "B05.2",
+          "criterion": "Does not re-ask settled outcome, audience, input, format, destination, columns, or privacy constraints."
+        },
+        {
+          "id": "B05.3",
+          "criterion": "Does not execute the cleanup checklist or claim to have recovered an unseen file or persistent memory."
+        }
+      ],
+      "critical_failures": [
+        "Contradicts a settled privacy or prompt-only constraint.",
+        "Fabricates recovered session state beyond the supplied record."
+      ]
+    },
+    {
+      "id": "B06",
+      "split": "representative_regression",
+      "required_tools": [],
+      "question_allowance": {
+        "per_turn": [
+          0
+        ],
+        "max_unnecessary_questions": 0
+      },
+      "checks": [
+        {
+          "id": "B06.1",
+          "criterion": "Immediately supplies a provisional copyable prompt rather than an interview or workshop plan."
+        },
+        {
+          "id": "B06.2",
+          "criterion": "Uses explicit placeholders for audience, goal, duration, budget, and output destination, with useful instructions for producing the eventual plan."
+        },
+        {
+          "id": "B06.3",
+          "criterion": "Keeps unknowns visible and leaves the draft easy to revise."
+        }
+      ],
+      "critical_failures": [
+        "Blocks the draft on clarification questions.",
+        "Invents a workshop audience, budget, duration, or destination as a settled fact."
+      ]
+    },
+    {
+      "id": "B07",
+      "split": "held_out_input",
+      "required_tools": [],
+      "question_allowance": {
+        "per_turn": [
+          0
+        ],
+        "max_unnecessary_questions": 0
+      },
+      "checks": [
+        {
+          "id": "B07.1",
+          "criterion": "Returns one self-contained handoff prompt addressed to Skill Forge that can be used without this conversation."
+        },
+        {
+          "id": "B07.2",
+          "criterion": "Carries the purpose, activation/exclusion, CSV fields, output sections, audience, truthfulness and GitHub-write boundaries, pace/resume controls, local installable-folder delivery, and observable success into the handoff."
+        },
+        {
+          "id": "B07.3",
+          "criterion": "Includes a synthetic representative CSV example and leaves closed-issue inclusion visibly unresolved, with a recommendation identified as a recommendation."
+        },
+        {
+          "id": "B07.4",
+          "criterion": "Does not research, build, install, publish, or claim those actions occurred."
+        }
+      ],
+      "critical_failures": [
+        "Starts skill construction, installation, research, or publication.",
+        "Relies on 'as discussed above' or omits so much settled context that Skill Forge must rediscover the core request.",
+        "Treats the unresolved closed-issue choice as user-approved."
+      ]
+    },
+    {
+      "id": "B08",
+      "split": "held_out_input",
+      "required_tools": [
+        "Skill Forge workflow or an explicitly recorded unavailability",
+        "local file read/write"
+      ],
+      "question_allowance": {
+        "per_turn": [
+          0
+        ],
+        "max_unnecessary_questions": 0
+      },
+      "checks": [
+        {
+          "id": "B08.1",
+          "criterion": "Produces or internally passes a complete handoff to the available Skill Forge workflow and continues into the explicitly requested local build."
+        },
+        {
+          "id": "B08.2",
+          "criterion": "Actually creates agenda-tidier/SKILL.md and README example in the substituted per-case directory, with accurate discovery metadata and the stated scope, input/output, exclusions, and no-invention constraints."
+        },
+        {
+          "id": "B08.3",
+          "criterion": "Reports the real created paths and respects no install, no publication, no external foundation research, and no model evaluation."
+        },
+        {
+          "id": "B08.4",
+          "criterion": "If Skill Forge is actually unavailable, records that limitation and returns a complete handoff without a false build claim; the build check is then unavailable, not passed."
+        }
+      ],
+      "critical_failures": [
+        "Stops at a handoff despite an available Skill Forge workflow and local write capability.",
+        "Claims files were built when they do not exist.",
+        "Installs, publishes, or performs explicitly declined research or model evaluation.",
+        "Writes outside the supplied case output directory."
+      ]
+    },
+    {
+      "id": "B09",
+      "split": "held_out_input",
+      "required_tools": [
+        "local file write"
+      ],
+      "question_allowance": {
+        "per_turn": [
+          0
+        ],
+        "max_unnecessary_questions": 0
+      },
+      "checks": [
+        {
+          "id": "B09.1",
+          "criterion": "Shows a standalone final prompt before or alongside clearly subsequent authorized execution; preserves every note constraint."
+        },
+        {
+          "id": "B09.2",
+          "criterion": "Actually writes welcome.txt at the substituted path and reports that real path."
+        },
+        {
+          "id": "B09.3",
+          "criterion": "The saved plain text is 55–75 whitespace-delimited words, addresses first-time park-cleanup volunteers warmly and directly, contains the exact required sentence, and includes both [time] and [meeting point]."
+        },
+        {
+          "id": "B09.4",
+          "criterion": "The file introduces no invented date, address, organizer, or fundraising request."
+        }
+      ],
+      "critical_failures": [
+        "Pretends to save a missing file.",
+        "Only provides a prompt and does not perform authorized execution when writing is available.",
+        "Executes without supplying the requested prompt.",
+        "Writes outside the case output directory or introduces forbidden logistics/fundraising."
+      ]
+    }
+  ],
+  "activation": [
+    {
+      "id": "A01",
+      "expected": "activate",
+      "reason": "Explicitly requests prompt refinement with focused questioning."
+    },
+    {
+      "id": "A02",
+      "expected": "activate",
+      "reason": "Explicitly requests improving a reusable prompt and settling requirements."
+    },
+    {
+      "id": "A03",
+      "expected": "do_not_activate",
+      "reason": "Direct content-writing task; no prompt-design request."
+    },
+    {
+      "id": "A04",
+      "expected": "do_not_activate",
+      "reason": "Direct spreadsheet repair; an Excel domain reference alone does not activate a prompt builder."
+    },
+    {
+      "id": "A05",
+      "expected": "do_not_activate",
+      "reason": "Direct, explicit Skill Forge build request; route to Skill Forge rather than inserting a prompt-building interview."
+    },
+    {
+      "id": "A06",
+      "expected": "do_not_activate",
+      "reason": "Direct checkpoint execution request; resemblance to the motivating example is not prompt-building intent."
+    }
+  ]
+}

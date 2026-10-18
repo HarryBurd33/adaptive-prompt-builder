@@ -1,0 +1,45 @@
+{
+  "id": "H01",
+  "status": "frozen_before_execution",
+  "candidate2_reported_frozen_before_authoring": true,
+  "candidate_source_inspected": false,
+  "required_tools": [],
+  "question_allowance": {
+    "per_turn": [
+      1
+    ],
+    "max_unnecessary_questions": 0
+  },
+  "checks": [
+    {
+      "id": "H01.1",
+      "criterion": "First asks what 'lighter' means, offering or explaining at least two materially different plausible meanings, such as shorter/less detailed content versus a different tone, level of technicality, visual density, or file size."
+    },
+    {
+      "id": "H01.2",
+      "criterion": "Does not silently choose the meaning of 'lighter', invent the user's priorities, or produce a finalized transformation prompt before resolving that consequential ambiguity."
+    },
+    {
+      "id": "H01.3",
+      "criterion": "Uses the settled board audience and pasted-report input without re-asking them; asks at most one independent user decision, focused on the semantic ambiguity."
+    },
+    {
+      "id": "H01.4",
+      "criterion": "Stays in prompt refinement: no report editing, skill build, or claim to have inspected a report that was not supplied."
+    }
+  ],
+  "critical_failures": [
+    "Edits or builds despite the explicit scope limit.",
+    "Claims to have inspected an absent report.",
+    "Presents an invented meaning or objective as the user's settled intent."
+  ],
+  "qualitative_dimensions": {
+    "prompt_usability": "not_applicable for the expected question-only turn",
+    "dialogue_and_effort": "0–2 under the frozen main rubric",
+    "state_and_revision": "0–2 under the frozen main rubric",
+    "scope_and_honesty": "0–2 under the frozen main rubric"
+  },
+  "gate": "Pass requires all four checks, one or fewer independent decisions, zero unnecessary questions, no critical failure, and 2 on each applicable dimension. Do not modify the main suite gates.",
+  "separation": "Executor receives heldout-input.json plus assigned guidance only, not this file or private rubric.",
+  "evidence_label": "Held out from candidate2 author at patch time, conditional on source/criteria separation; one synthetic probe, not general reliability evidence."
+}

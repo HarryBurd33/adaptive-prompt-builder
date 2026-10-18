@@ -1,0 +1,1323 @@
+{
+  "suite_id": "adaptive-prompt-builder-2026-10-18-v1",
+  "grading_version": 2,
+  "status": "final_second_comparison",
+  "graded_date": "2026-10-18",
+  "evaluator": {
+    "role": "same independent grader; no source authorship",
+    "candidate_source_read": false,
+    "skill_snapshots_read": false,
+    "explicit_run_mapping_read": false,
+    "blinding": "Not fully blind. The v1 required logs indirectly revealed assignment; the v2 root messages explicitly identified green as candidate2. Grades remain tied to frozen observable checks.",
+    "no_subagents_used": true
+  },
+  "frozen_hashes": {
+    "inputs.json": "1d343626a319df9a619ea06e39a4ada0cae87e3d019cfe6b91cb644b3bce54a2",
+    "cases.json": "9190b6c1226335078ac958d82edee12965c55c680b31c906c3fae7ff8108ae84",
+    "rubric.md": "02f53d7a266ae4f4b6d40f98ee1dcd26ce612ead833629b6af0bcdceb3d8a745"
+  },
+  "heldout_frozen_hashes": {
+    "heldout-input.json": "f1ba26e0aa1e1cb4faf8ace2b14e82c0aaeb09d09c728bfabde13a93324f85f3",
+    "heldout-criteria.json": "45bf215495bdd61ba4247cfd1100c1b76a03e2b37e9149c7f140a7b047516f05"
+  },
+  "v1_record_preserved": {
+    "grades": "evals/grades-v1.json",
+    "report": "evals/GRADING-v1.md"
+  },
+  "execution_evidence": {
+    "type": "actual model executions under controlled synthetic inputs",
+    "green": "New executor context; actual sequential B01, followed by shared-context B02–B09 batch and H01.",
+    "amber": "B01–B09 baseline results reused from v1; H01 newly executed in the existing amber executor.",
+    "model": "Same inherited model/settings and tools per root protocol; exact revision/timing not supplied.",
+    "case_status": "All nine original cases are regression evidence for green after feedback. H01 was authored and frozen after candidate2 was reported frozen; source and private criteria were not shown to that author before the patch.",
+    "artifacts_independently_read": true,
+    "actual_welcome_word_counts": {
+      "amber": 64,
+      "green": 63
+    },
+    "activation": "Unchanged discovery metadata reported by root; reuse the six blue metadata-routing outputs for green, with that limitation. No new routing or native host activation telemetry."
+  },
+  "conditions": {
+    "amber": {
+      "behavioral": [
+        {
+          "id": "B01",
+          "original_split": "motivating_regression",
+          "checks": [
+            {
+              "id": "B01.1",
+              "status": "fail",
+              "evidence": "The first reply asks “What’s the rough idea you want the reusable prompt to handle?” and leaves detection merely “an open choice”; it does not clarify quota/context/monetary budget despite the supplied checkpoint idea.",
+              "files": [
+                "{{RUN_ROOT}}/amber/B01-turn1.md"
+              ]
+            },
+            {
+              "id": "B01.2",
+              "status": "pass",
+              "evidence": "The reply stays in refinement and offers no checkpoint execution, skill files, or automation.",
+              "files": [
+                "{{RUN_ROOT}}/amber/B01-turn1.md"
+              ]
+            },
+            {
+              "id": "B01.3",
+              "status": "pass",
+              "evidence": "“usage means remaining account quota in Codex”; detection and automatic triggering remain “unverified.” One destination decision is asked.",
+              "files": [
+                "{{RUN_ROOT}}/amber/B01-turn2.md"
+              ]
+            },
+            {
+              "id": "B01.4",
+              "status": "pass",
+              "evidence": "The standalone prompt uses a real quota reading, manual/verified-trigger fallback, ≤20% warning, and all six checkpoint fields for copying into a new chat; no checkpoint is run.",
+              "files": [
+                "{{RUN_ROOT}}/amber/B01-turn3.md"
+              ]
+            },
+            {
+              "id": "B01.5",
+              "status": "pass",
+              "evidence": "“Never guess quota or infer it from conversation length, spending, or elapsed time”; unresolved readings/windows/triggers are listed.",
+              "files": [
+                "{{RUN_ROOT}}/amber/B01-turn3.md"
+              ]
+            }
+          ],
+          "question_budget": {
+            "allowed_per_turn": [
+              1,
+              1,
+              0
+            ],
+            "observed_independent_decisions_per_turn": [
+              1,
+              1,
+              0
+            ],
+            "max_unnecessary": 0,
+            "observed_unnecessary": 1,
+            "within_total_budget": true,
+            "within_unnecessary_budget": false,
+            "evidence": "The first response re-asks the already supplied rough idea; the second asks one previously unresolved destination choice."
+          },
+          "critical_failures_observed": [],
+          "qualitative_dimensions": {
+            "prompt_usability": 2,
+            "dialogue_and_effort": 1,
+            "state_and_revision": 2,
+            "scope_and_honesty": 2
+          },
+          "final_status": "fail"
+        },
+        {
+          "id": "B02",
+          "original_split": "representative_regression",
+          "checks": [
+            {
+              "id": "B02.1",
+              "status": "pass",
+              "evidence": "Returns a complete copyable prompt, with no questions.",
+              "files": [
+                "{{RUN_ROOT}}/amber/B02.md"
+              ]
+            },
+            {
+              "id": "B02.2",
+              "status": "pass",
+              "evidence": "Preserves operations managers/two-week pilot, 450–600 words, Markdown/chat, all five named sections, calm direct tone, source placeholder, and one material tradeoff.",
+              "files": [
+                "{{RUN_ROOT}}/amber/B02.md"
+              ]
+            },
+            {
+              "id": "B02.3",
+              "status": "pass",
+              "evidence": "“Distinguish recorded facts from proposals”; “Label missing data explicitly”; the response is a prompt rather than a memo.",
+              "files": [
+                "{{RUN_ROOT}}/amber/B02.md"
+              ]
+            }
+          ],
+          "question_budget": {
+            "allowed_per_turn": [
+              0
+            ],
+            "observed_independent_decisions_per_turn": [
+              0
+            ],
+            "max_unnecessary": 0,
+            "observed_unnecessary": 0,
+            "within_total_budget": true,
+            "within_unnecessary_budget": true,
+            "evidence": "No user decision requested."
+          },
+          "critical_failures_observed": [],
+          "qualitative_dimensions": {
+            "prompt_usability": 2,
+            "dialogue_and_effort": 2,
+            "state_and_revision": 2,
+            "scope_and_honesty": 2
+          },
+          "final_status": "pass"
+        },
+        {
+          "id": "B03",
+          "original_split": "held_out_input",
+          "checks": [
+            {
+              "id": "B03.1",
+              "status": "pass",
+              "evidence": "“local Excel .xlsx workbook for team coordinators” appears in a complete revised prompt.",
+              "files": [
+                "{{RUN_ROOT}}/amber/B03.md"
+              ]
+            },
+            {
+              "id": "B03.2",
+              "status": "pass",
+              "evidence": "Exactly People(Name, Start date, Coordinator) and Tasks(Task, Owner, Due date, Status); “Leave unavailable cell values blank.”",
+              "files": [
+                "{{RUN_ROOT}}/amber/B03.md"
+              ]
+            },
+            {
+              "id": "B03.3",
+              "status": "pass",
+              "evidence": "Preserves supplied onboarding notes, supportive plain language, no invented policies/personal details, no macros, no external uploads.",
+              "files": [
+                "{{RUN_ROOT}}/amber/B03.md"
+              ]
+            },
+            {
+              "id": "B03.4",
+              "status": "pass",
+              "evidence": "No Word/.docx/two-page or people-manager deliverable remains; response supplies only the revised prompt and no workbook.",
+              "files": [
+                "{{RUN_ROOT}}/amber/B03.md"
+              ]
+            }
+          ],
+          "question_budget": {
+            "allowed_per_turn": [
+              0
+            ],
+            "observed_independent_decisions_per_turn": [
+              0
+            ],
+            "max_unnecessary": 0,
+            "observed_unnecessary": 0,
+            "within_total_budget": true,
+            "within_unnecessary_budget": true,
+            "evidence": "No user decision requested."
+          },
+          "critical_failures_observed": [],
+          "qualitative_dimensions": {
+            "prompt_usability": 2,
+            "dialogue_and_effort": 2,
+            "state_and_revision": 2,
+            "scope_and_honesty": 2
+          },
+          "final_status": "pass"
+        },
+        {
+          "id": "B04",
+          "original_split": "held_out_input",
+          "checks": [
+            {
+              "id": "B04.1",
+              "status": "pass",
+              "evidence": "Explains absent issues cannot be checked and unknown-to-zero would be “a false claim that no issues exist.”",
+              "files": [
+                "{{RUN_ROOT}}/amber/B04.md"
+              ]
+            },
+            {
+              "id": "B04.2",
+              "status": "pass",
+              "evidence": "Recommends a coverage warning and unknown counts; asks one choice between producing with warning and requesting complete export.",
+              "files": [
+                "{{RUN_ROOT}}/amber/B04.md"
+              ]
+            },
+            {
+              "id": "B04.3",
+              "status": "pass",
+              "evidence": "Maintains supplied-label and snapshot limits; does not change the maintainer/Markdown/chat/no-write decisions or perform GitHub writes.",
+              "files": [
+                "{{RUN_ROOT}}/amber/B04.md"
+              ]
+            }
+          ],
+          "question_budget": {
+            "allowed_per_turn": [
+              1
+            ],
+            "observed_independent_decisions_per_turn": [
+              1
+            ],
+            "max_unnecessary": 0,
+            "observed_unnecessary": 0,
+            "within_total_budget": true,
+            "within_unnecessary_budget": true,
+            "evidence": "One choice on the requested unresolved axis."
+          },
+          "critical_failures_observed": [],
+          "qualitative_dimensions": {
+            "prompt_usability": "not_applicable",
+            "dialogue_and_effort": 2,
+            "state_and_revision": 2,
+            "scope_and_honesty": 2
+          },
+          "final_status": "pass"
+        },
+        {
+          "id": "B05",
+          "original_split": "held_out_input",
+          "checks": [
+            {
+              "id": "B05.1",
+              "status": "pass",
+              "evidence": "One focused time-versus-role ordering question with time-order recommendation for following the cleanup.",
+              "files": [
+                "{{RUN_ROOT}}/amber/B05.md"
+              ]
+            },
+            {
+              "id": "B05.2",
+              "status": "pass",
+              "evidence": "Does not re-ask audience, sources, format, destination, columns, privacy, or other settled choices.",
+              "files": [
+                "{{RUN_ROOT}}/amber/B05.md"
+              ]
+            },
+            {
+              "id": "B05.3",
+              "status": "pass",
+              "evidence": "No checklist execution or claim of unseen recovered memory/files.",
+              "files": [
+                "{{RUN_ROOT}}/amber/B05.md"
+              ]
+            }
+          ],
+          "question_budget": {
+            "allowed_per_turn": [
+              1
+            ],
+            "observed_independent_decisions_per_turn": [
+              1
+            ],
+            "max_unnecessary": 0,
+            "observed_unnecessary": 0,
+            "within_total_budget": true,
+            "within_unnecessary_budget": true,
+            "evidence": "One choice on the requested unresolved axis."
+          },
+          "critical_failures_observed": [],
+          "qualitative_dimensions": {
+            "prompt_usability": "not_applicable",
+            "dialogue_and_effort": 2,
+            "state_and_revision": 2,
+            "scope_and_honesty": 2
+          },
+          "final_status": "pass"
+        },
+        {
+          "id": "B06",
+          "original_split": "representative_regression",
+          "checks": [
+            {
+              "id": "B06.1",
+              "status": "pass",
+              "evidence": "Immediately returns a provisional workshop-planning prompt, without an interview or actual workshop plan.",
+              "files": [
+                "{{RUN_ROOT}}/amber/B06.md"
+              ]
+            },
+            {
+              "id": "B06.2",
+              "status": "pass",
+              "evidence": "Explicit placeholders cover audience, goal, duration, budget, destination; useful plan structure and missing-input instructions are included.",
+              "files": [
+                "{{RUN_ROOT}}/amber/B06.md"
+              ]
+            },
+            {
+              "id": "B06.3",
+              "status": "pass",
+              "evidence": "“Treat unfilled placeholders as unresolved facts”; Markdown is identified as a proposed default and draft remains revisable.",
+              "files": [
+                "{{RUN_ROOT}}/amber/B06.md"
+              ]
+            }
+          ],
+          "question_budget": {
+            "allowed_per_turn": [
+              0
+            ],
+            "observed_independent_decisions_per_turn": [
+              0
+            ],
+            "max_unnecessary": 0,
+            "observed_unnecessary": 0,
+            "within_total_budget": true,
+            "within_unnecessary_budget": true,
+            "evidence": "No user decision requested."
+          },
+          "critical_failures_observed": [],
+          "qualitative_dimensions": {
+            "prompt_usability": 2,
+            "dialogue_and_effort": 2,
+            "state_and_revision": 2,
+            "scope_and_honesty": 2
+          },
+          "final_status": "pass"
+        },
+        {
+          "id": "B07",
+          "original_split": "held_out_input",
+          "checks": [
+            {
+              "id": "B07.1",
+              "status": "pass",
+              "evidence": "Self-contained prompt begins “Use Skill Forge to create a reusable skill” and contains the full request.",
+              "files": [
+                "{{RUN_ROOT}}/amber/B07.md"
+              ]
+            },
+            {
+              "id": "B07.2",
+              "status": "pass",
+              "evidence": "Includes digest scope/exclusion, CSV fields, four sections, maintainers, unknowns/no GitHub writes, quick/draft/resume, local folder, and success checks.",
+              "files": [
+                "{{RUN_ROOT}}/amber/B07.md"
+              ]
+            },
+            {
+              "id": "B07.3",
+              "status": "pass",
+              "evidence": "Includes fictional three-row CSV; excludes closed issues only as “my proposed default,” explicitly not confirmed.",
+              "files": [
+                "{{RUN_ROOT}}/amber/B07.md"
+              ]
+            },
+            {
+              "id": "B07.4",
+              "status": "pass",
+              "evidence": "Returns handoff only; actions record external browsing/research/install/publication skipped. Forge reads/build are attributable to separately authorized B08.",
+              "files": [
+                "{{RUN_ROOT}}/amber/B07.md",
+                "{{RUN_ROOT}}/amber/actions.json"
+              ]
+            }
+          ],
+          "question_budget": {
+            "allowed_per_turn": [
+              0
+            ],
+            "observed_independent_decisions_per_turn": [
+              0
+            ],
+            "max_unnecessary": 0,
+            "observed_unnecessary": 0,
+            "within_total_budget": true,
+            "within_unnecessary_budget": true,
+            "evidence": "No user decision requested."
+          },
+          "critical_failures_observed": [],
+          "qualitative_dimensions": {
+            "prompt_usability": 2,
+            "dialogue_and_effort": 2,
+            "state_and_revision": 2,
+            "scope_and_honesty": 2
+          },
+          "final_status": "pass"
+        },
+        {
+          "id": "B08",
+          "original_split": "held_out_input",
+          "checks": [
+            {
+              "id": "B08.1",
+              "status": "pass",
+              "evidence": "Complete handoff plus completed local build; actions record reading Skill Forge and invoking its static validator.",
+              "files": [
+                "{{RUN_ROOT}}/amber/B08.md",
+                "{{RUN_ROOT}}/amber/actions.json"
+              ]
+            },
+            {
+              "id": "B08.2",
+              "status": "pass",
+              "evidence": "Read the actual SKILL.md and README.md: name/description, agenda activation/exclusions, Markdown output, duplicate grouping, unspecified owners/durations, no invented facts, illustrative example.",
+              "files": [
+                "{{RUN_ROOT}}/amber/b08/agenda-tidier/SKILL.md",
+                "{{RUN_ROOT}}/amber/b08/agenda-tidier/README.md"
+              ]
+            },
+            {
+              "id": "B08.3",
+              "status": "pass",
+              "evidence": "Reports the real local paths; actual files exist. Actions and response disclose no installation/publication/external research/model evaluation.",
+              "files": [
+                "{{RUN_ROOT}}/amber/B08.md",
+                "{{RUN_ROOT}}/amber/actions.json"
+              ]
+            },
+            {
+              "id": "B08.4",
+              "status": "pass",
+              "evidence": "Conditional fallback not triggered: Skill Forge was available and used; no false unavailability claim.",
+              "files": [
+                "{{RUN_ROOT}}/amber/B08.md",
+                "{{RUN_ROOT}}/amber/actions.json"
+              ]
+            }
+          ],
+          "question_budget": {
+            "allowed_per_turn": [
+              0
+            ],
+            "observed_independent_decisions_per_turn": [
+              0
+            ],
+            "max_unnecessary": 0,
+            "observed_unnecessary": 0,
+            "within_total_budget": true,
+            "within_unnecessary_budget": true,
+            "evidence": "No user decision requested."
+          },
+          "critical_failures_observed": [],
+          "qualitative_dimensions": {
+            "prompt_usability": 2,
+            "dialogue_and_effort": 2,
+            "state_and_revision": 2,
+            "scope_and_honesty": 2
+          },
+          "final_status": "pass"
+        },
+        {
+          "id": "B09",
+          "original_split": "held_out_input",
+          "checks": [
+            {
+              "id": "B09.1",
+              "status": "pass",
+              "evidence": "Recorded reply presents the complete note prompt first, followed by saved-file report; all note constraints are present.",
+              "files": [
+                "{{RUN_ROOT}}/amber/B09.md"
+              ]
+            },
+            {
+              "id": "B09.2",
+              "status": "pass",
+              "evidence": "Read actual welcome.txt at the reported local path; file exists and is nonempty.",
+              "files": [
+                "{{RUN_ROOT}}/amber/B09.md",
+                "{{RUN_ROOT}}/amber/b09/welcome.txt"
+              ]
+            },
+            {
+              "id": "B09.3",
+              "status": "pass",
+              "evidence": "Independently counted 64 whitespace-delimited words; warm first-time cleanup welcome, exact required sentence, [time] and [meeting point] present.",
+              "files": [
+                "{{RUN_ROOT}}/amber/b09/welcome.txt"
+              ]
+            },
+            {
+              "id": "B09.4",
+              "status": "pass",
+              "evidence": "Saved note contains no date, address, organizer identity, or fundraising request.",
+              "files": [
+                "{{RUN_ROOT}}/amber/b09/welcome.txt"
+              ]
+            }
+          ],
+          "question_budget": {
+            "allowed_per_turn": [
+              0
+            ],
+            "observed_independent_decisions_per_turn": [
+              0
+            ],
+            "max_unnecessary": 0,
+            "observed_unnecessary": 0,
+            "within_total_budget": true,
+            "within_unnecessary_budget": true,
+            "evidence": "No user decision requested."
+          },
+          "critical_failures_observed": [],
+          "qualitative_dimensions": {
+            "prompt_usability": 2,
+            "dialogue_and_effort": 2,
+            "state_and_revision": 2,
+            "scope_and_honesty": 2
+          },
+          "final_status": "pass"
+        }
+      ],
+      "activation": [
+        {
+          "id": "A01",
+          "expected": "activate",
+          "observed_target_selected": true,
+          "status": "pass",
+          "evidence": "{{RUN_ROOT}}/activation-results.json#conditions.amber.A01"
+        },
+        {
+          "id": "A02",
+          "expected": "activate",
+          "observed_target_selected": true,
+          "status": "pass",
+          "evidence": "{{RUN_ROOT}}/activation-results.json#conditions.amber.A02"
+        },
+        {
+          "id": "A03",
+          "expected": "do_not_activate",
+          "observed_target_selected": false,
+          "status": "pass",
+          "evidence": "{{RUN_ROOT}}/activation-results.json#conditions.amber.A03"
+        },
+        {
+          "id": "A04",
+          "expected": "do_not_activate",
+          "observed_target_selected": false,
+          "status": "pass",
+          "evidence": "{{RUN_ROOT}}/activation-results.json#conditions.amber.A04"
+        },
+        {
+          "id": "A05",
+          "expected": "do_not_activate",
+          "observed_target_selected": false,
+          "status": "pass",
+          "evidence": "{{RUN_ROOT}}/activation-results.json#conditions.amber.A05"
+        },
+        {
+          "id": "A06",
+          "expected": "do_not_activate",
+          "observed_target_selected": false,
+          "status": "pass",
+          "evidence": "{{RUN_ROOT}}/activation-results.json#conditions.amber.A06"
+        }
+      ],
+      "summary": {
+        "behavioral_pass": 8,
+        "behavioral_fail": 1,
+        "behavioral_inconclusive": 0,
+        "activation_pass": 6,
+        "activation_total": 6,
+        "critical_failures": 0,
+        "release_gate": "fail",
+        "heldout_pass": 1,
+        "heldout_total": 1
+      },
+      "heldout": [
+        {
+          "id": "H01",
+          "checks": [
+            {
+              "id": "H01.1",
+              "status": "pass",
+              "evidence": "Asks what lighter means: less to read, decision/risk visibility, or simpler language/tone; content and tone are materially different meanings."
+            },
+            {
+              "id": "H01.2",
+              "status": "pass",
+              "evidence": "Does not choose a meaning or draft a final transformation prompt before the answer."
+            },
+            {
+              "id": "H01.3",
+              "status": "pass",
+              "evidence": "Explicitly treats board audience and pasted report as settled; one meaning decision is asked."
+            },
+            {
+              "id": "H01.4",
+              "status": "pass",
+              "evidence": "No report edit, build, or claim to have inspected an absent report."
+            }
+          ],
+          "file": "{{RUN_ROOT}}/amber/H01.md",
+          "question_budget": {
+            "allowed_per_turn": [
+              1
+            ],
+            "observed_independent_decisions_per_turn": [
+              1
+            ],
+            "max_unnecessary": 0,
+            "observed_unnecessary": 0,
+            "within_total_budget": true,
+            "within_unnecessary_budget": true
+          },
+          "critical_failures_observed": [],
+          "qualitative_dimensions": {
+            "prompt_usability": "not_applicable",
+            "dialogue_and_effort": 2,
+            "state_and_revision": 2,
+            "scope_and_honesty": 2
+          },
+          "final_status": "pass"
+        }
+      ]
+    },
+    "green": {
+      "behavioral": [
+        {
+          "id": "B01",
+          "evidence_split": "regression_after_v1_feedback",
+          "original_split": "motivating_regression",
+          "checks": [
+            {
+              "id": "B01.1",
+              "status": "pass",
+              "evidence": "First asks what low usage means and explicitly distinguishes account quota, conversation context limit, and a token or cost budget.",
+              "files": [
+                "{{RUN_ROOT}}/green/B01-turn1.md"
+              ]
+            },
+            {
+              "id": "B01.2",
+              "status": "pass",
+              "evidence": "Stays in prompt refinement; no checkpoint execution, build, or automation.",
+              "files": [
+                "{{RUN_ROOT}}/green/B01-turn1.md"
+              ]
+            },
+            {
+              "id": "B01.3",
+              "status": "pass",
+              "evidence": "Account quota is settled, automatic triggering remains unverified, and one consequential manual-fallback decision is asked with a recommendation.",
+              "files": [
+                "{{RUN_ROOT}}/green/B01-turn2.md"
+              ]
+            },
+            {
+              "id": "B01.4",
+              "status": "pass",
+              "evidence": "Immediate self-contained prompt retains real account-quota readings, ≤20% threshold, manual fallback, six compact Markdown fields for new-chat continuation, and no implementation/execution.",
+              "files": [
+                "{{RUN_ROOT}}/green/B01-turn3.md"
+              ]
+            },
+            {
+              "id": "B01.5",
+              "status": "pass",
+              "evidence": "Never substitutes context or spending for quota and keeps quota-reading and automatic-trigger host details unresolved.",
+              "files": [
+                "{{RUN_ROOT}}/green/B01-turn3.md"
+              ]
+            }
+          ],
+          "question_budget": {
+            "allowed_per_turn": [
+              1,
+              1,
+              0
+            ],
+            "observed_independent_decisions_per_turn": [
+              1,
+              1,
+              0
+            ],
+            "max_unnecessary": 0,
+            "observed_unnecessary": 0,
+            "within_total_budget": true,
+            "within_unnecessary_budget": true
+          },
+          "critical_failures_observed": [],
+          "qualitative_dimensions": {
+            "prompt_usability": 2,
+            "dialogue_and_effort": 2,
+            "state_and_revision": 2,
+            "scope_and_honesty": 2
+          },
+          "final_status": "pass"
+        },
+        {
+          "id": "B02",
+          "evidence_split": "regression_after_v1_feedback",
+          "original_split": "representative_regression",
+          "checks": [
+            {
+              "id": "B02.1",
+              "status": "pass",
+              "evidence": "Immediately returns the complete reusable prompt without questions.",
+              "files": [
+                "{{RUN_ROOT}}/green/B02.md"
+              ]
+            },
+            {
+              "id": "B02.2",
+              "status": "pass",
+              "evidence": "Preserves all specified audience/decision/pilot, word count, sections, tone, source placeholder, Markdown/chat, and tradeoff requirements.",
+              "files": [
+                "{{RUN_ROOT}}/green/B02.md"
+              ]
+            },
+            {
+              "id": "B02.3",
+              "status": "pass",
+              "evidence": "Separates facts/proposals/recommendations and labels missing data; no memo generated.",
+              "files": [
+                "{{RUN_ROOT}}/green/B02.md"
+              ]
+            }
+          ],
+          "question_budget": {
+            "allowed_per_turn": [
+              0
+            ],
+            "observed_independent_decisions_per_turn": [
+              0
+            ],
+            "max_unnecessary": 0,
+            "observed_unnecessary": 0,
+            "within_total_budget": true,
+            "within_unnecessary_budget": true
+          },
+          "critical_failures_observed": [],
+          "qualitative_dimensions": {
+            "prompt_usability": 2,
+            "dialogue_and_effort": 2,
+            "state_and_revision": 2,
+            "scope_and_honesty": 2
+          },
+          "final_status": "pass"
+        },
+        {
+          "id": "B03",
+          "evidence_split": "regression_after_v1_feedback",
+          "original_split": "held_out_input",
+          "checks": [
+            {
+              "id": "B03.1",
+              "status": "pass",
+              "evidence": "Full standalone onboarding prompt specifies team coordinators and a real local Excel .xlsx file.",
+              "files": [
+                "{{RUN_ROOT}}/green/B03.md"
+              ]
+            },
+            {
+              "id": "B03.2",
+              "status": "pass",
+              "evidence": "Exactly People and Tasks with supplied ordered headers; unavailable cells blank.",
+              "files": [
+                "{{RUN_ROOT}}/green/B03.md"
+              ]
+            },
+            {
+              "id": "B03.3",
+              "status": "pass",
+              "evidence": "Preserves supportive onboarding wording, supplied facts only, no invented policies/personal data, no macros, and no uploads.",
+              "files": [
+                "{{RUN_ROOT}}/green/B03.md"
+              ]
+            },
+            {
+              "id": "B03.4",
+              "status": "pass",
+              "evidence": "Superseded Word/two-page/people-manager instructions removed; response is only the revised prompt, not a workbook.",
+              "files": [
+                "{{RUN_ROOT}}/green/B03.md"
+              ]
+            }
+          ],
+          "question_budget": {
+            "allowed_per_turn": [
+              0
+            ],
+            "observed_independent_decisions_per_turn": [
+              0
+            ],
+            "max_unnecessary": 0,
+            "observed_unnecessary": 0,
+            "within_total_budget": true,
+            "within_unnecessary_budget": true
+          },
+          "critical_failures_observed": [],
+          "qualitative_dimensions": {
+            "prompt_usability": 2,
+            "dialogue_and_effort": 2,
+            "state_and_revision": 2,
+            "scope_and_honesty": 2
+          },
+          "final_status": "pass"
+        },
+        {
+          "id": "B04",
+          "evidence_split": "regression_after_v1_feedback",
+          "original_split": "held_out_input",
+          "checks": [
+            {
+              "id": "B04.1",
+              "status": "pass",
+              "evidence": "Explains absent critical issues cannot be known and unknown-to-zero would be a false factual claim, with a concrete export example.",
+              "files": [
+                "{{RUN_ROOT}}/green/B04.md"
+              ]
+            },
+            {
+              "id": "B04.2",
+              "status": "pass",
+              "evidence": "Recommends supplied-label review, unknown counts, explicit coverage limits; asks one evidence-rule versus additional-source choice.",
+              "files": [
+                "{{RUN_ROOT}}/green/B04.md"
+              ]
+            },
+            {
+              "id": "B04.3",
+              "status": "pass",
+              "evidence": "No settled audience/output/no-write decision is changed; the recommendation preserves snapshot/label basis and no GitHub write occurs.",
+              "files": [
+                "{{RUN_ROOT}}/green/B04.md"
+              ]
+            }
+          ],
+          "question_budget": {
+            "allowed_per_turn": [
+              1
+            ],
+            "observed_independent_decisions_per_turn": [
+              1
+            ],
+            "max_unnecessary": 0,
+            "observed_unnecessary": 0,
+            "within_total_budget": true,
+            "within_unnecessary_budget": true
+          },
+          "critical_failures_observed": [],
+          "qualitative_dimensions": {
+            "prompt_usability": "not_applicable",
+            "dialogue_and_effort": 2,
+            "state_and_revision": 2,
+            "scope_and_honesty": 2
+          },
+          "final_status": "pass"
+        },
+        {
+          "id": "B05",
+          "evidence_split": "regression_after_v1_feedback",
+          "original_split": "held_out_input",
+          "checks": [
+            {
+              "id": "B05.1",
+              "status": "pass",
+              "evidence": "Single time-order versus assigned-role question with concrete tradeoff and time-order recommendation.",
+              "files": [
+                "{{RUN_ROOT}}/green/B05.md"
+              ]
+            },
+            {
+              "id": "B05.2",
+              "status": "pass",
+              "evidence": "No settled goal, audience, source, format, destination, columns, or privacy requirement is re-asked.",
+              "files": [
+                "{{RUN_ROOT}}/green/B05.md"
+              ]
+            },
+            {
+              "id": "B05.3",
+              "status": "pass",
+              "evidence": "No checklist execution or claim of unseen recovered state.",
+              "files": [
+                "{{RUN_ROOT}}/green/B05.md"
+              ]
+            }
+          ],
+          "question_budget": {
+            "allowed_per_turn": [
+              1
+            ],
+            "observed_independent_decisions_per_turn": [
+              1
+            ],
+            "max_unnecessary": 0,
+            "observed_unnecessary": 0,
+            "within_total_budget": true,
+            "within_unnecessary_budget": true
+          },
+          "critical_failures_observed": [],
+          "qualitative_dimensions": {
+            "prompt_usability": "not_applicable",
+            "dialogue_and_effort": 2,
+            "state_and_revision": 2,
+            "scope_and_honesty": 2
+          },
+          "final_status": "pass"
+        },
+        {
+          "id": "B06",
+          "evidence_split": "regression_after_v1_feedback",
+          "original_split": "representative_regression",
+          "checks": [
+            {
+              "id": "B06.1",
+              "status": "pass",
+              "evidence": "Immediate provisional copyable prompt, with no interview or actual workshop plan.",
+              "files": [
+                "{{RUN_ROOT}}/green/B06.md"
+              ]
+            },
+            {
+              "id": "B06.2",
+              "status": "pass",
+              "evidence": "All five placeholders are explicit; useful plan structure, material tradeoff, and delivery fallback included.",
+              "files": [
+                "{{RUN_ROOT}}/green/B06.md"
+              ]
+            },
+            {
+              "id": "B06.3",
+              "status": "pass",
+              "evidence": "Missing inputs stay unresolved; assumptions, costs, and timing are visibly provisional.",
+              "files": [
+                "{{RUN_ROOT}}/green/B06.md"
+              ]
+            }
+          ],
+          "question_budget": {
+            "allowed_per_turn": [
+              0
+            ],
+            "observed_independent_decisions_per_turn": [
+              0
+            ],
+            "max_unnecessary": 0,
+            "observed_unnecessary": 0,
+            "within_total_budget": true,
+            "within_unnecessary_budget": true
+          },
+          "critical_failures_observed": [],
+          "qualitative_dimensions": {
+            "prompt_usability": 2,
+            "dialogue_and_effort": 2,
+            "state_and_revision": 2,
+            "scope_and_honesty": 2
+          },
+          "final_status": "pass"
+        },
+        {
+          "id": "B07",
+          "evidence_split": "regression_after_v1_feedback",
+          "original_split": "held_out_input",
+          "checks": [
+            {
+              "id": "B07.1",
+              "status": "pass",
+              "evidence": "Complete standalone Skill Forge handoff includes the full reusable digest-skill request.",
+              "files": [
+                "{{RUN_ROOT}}/green/B07.md"
+              ]
+            },
+            {
+              "id": "B07.2",
+              "status": "pass",
+              "evidence": "Includes purpose/activation/exclusions, CSV fields, output sections/audience, unknown and no-write limits, quick/draft/resume, local folder, and observable success.",
+              "files": [
+                "{{RUN_ROOT}}/green/B07.md"
+              ]
+            },
+            {
+              "id": "B07.3",
+              "status": "pass",
+              "evidence": "Four-row illustrative CSV and visibly unresolved closed-issue choice; exclusion recommendation is explicitly not confirmed.",
+              "files": [
+                "{{RUN_ROOT}}/green/B07.md"
+              ]
+            },
+            {
+              "id": "B07.4",
+              "status": "pass",
+              "evidence": "Only the handoff is returned; no B07 build, research, installation, or publication is performed or claimed.",
+              "files": [
+                "{{RUN_ROOT}}/green/B07.md"
+              ]
+            }
+          ],
+          "question_budget": {
+            "allowed_per_turn": [
+              0
+            ],
+            "observed_independent_decisions_per_turn": [
+              0
+            ],
+            "max_unnecessary": 0,
+            "observed_unnecessary": 0,
+            "within_total_budget": true,
+            "within_unnecessary_budget": true
+          },
+          "critical_failures_observed": [],
+          "qualitative_dimensions": {
+            "prompt_usability": 2,
+            "dialogue_and_effort": 2,
+            "state_and_revision": 2,
+            "scope_and_honesty": 2
+          },
+          "final_status": "pass"
+        },
+        {
+          "id": "B08",
+          "evidence_split": "regression_after_v1_feedback",
+          "original_split": "held_out_input",
+          "checks": [
+            {
+              "id": "B08.1",
+              "status": "pass",
+              "evidence": "Complete handoff followed by actual local build; actions record Skill Forge workflow and dependency-free static validation.",
+              "files": [
+                "{{RUN_ROOT}}/green/B08.md",
+                "{{RUN_ROOT}}/green/actions.json"
+              ]
+            },
+            {
+              "id": "B08.2",
+              "status": "pass",
+              "evidence": "Read real two-file package: accurate name/description, agenda activation/exclusions, concise Markdown/chat output, duplicate preservation, unspecified owners/durations, and no-invention constraints.",
+              "files": [
+                "{{RUN_ROOT}}/green/b08/agenda-tidier/SKILL.md",
+                "{{RUN_ROOT}}/green/b08/agenda-tidier/README.md"
+              ]
+            },
+            {
+              "id": "B08.3",
+              "status": "pass",
+              "evidence": "Real local paths reported; package exists. No installation/publication/research/model evaluation; optional YAML-dependent validation error was recovered with Forge's dependency-free validator.",
+              "files": [
+                "{{RUN_ROOT}}/green/B08.md",
+                "{{RUN_ROOT}}/green/actions.json"
+              ]
+            },
+            {
+              "id": "B08.4",
+              "status": "pass",
+              "evidence": "Conditional fallback inactive: Skill Forge was available and used, without a false build or unavailability claim.",
+              "files": [
+                "{{RUN_ROOT}}/green/B08.md",
+                "{{RUN_ROOT}}/green/actions.json"
+              ]
+            }
+          ],
+          "question_budget": {
+            "allowed_per_turn": [
+              0
+            ],
+            "observed_independent_decisions_per_turn": [
+              0
+            ],
+            "max_unnecessary": 0,
+            "observed_unnecessary": 0,
+            "within_total_budget": true,
+            "within_unnecessary_budget": true
+          },
+          "critical_failures_observed": [],
+          "qualitative_dimensions": {
+            "prompt_usability": 2,
+            "dialogue_and_effort": 2,
+            "state_and_revision": 2,
+            "scope_and_honesty": 2
+          },
+          "final_status": "pass"
+        },
+        {
+          "id": "B09",
+          "evidence_split": "regression_after_v1_feedback",
+          "original_split": "held_out_input",
+          "checks": [
+            {
+              "id": "B09.1",
+              "status": "pass",
+              "evidence": "Recorded response begins with standalone final prompt preserving every note constraint, followed by the saved-path report.",
+              "files": [
+                "{{RUN_ROOT}}/green/B09.md"
+              ]
+            },
+            {
+              "id": "B09.2",
+              "status": "pass",
+              "evidence": "Read actual welcome.txt at the reported local path; file exists and is plain text.",
+              "files": [
+                "{{RUN_ROOT}}/green/B09.md",
+                "{{RUN_ROOT}}/green/b09/welcome.txt"
+              ]
+            },
+            {
+              "id": "B09.3",
+              "status": "pass",
+              "evidence": "Independently counted 63 whitespace-delimited words; first-time park-cleanup welcome, exact sentence, [time], and [meeting point] all present.",
+              "files": [
+                "{{RUN_ROOT}}/green/b09/welcome.txt"
+              ]
+            },
+            {
+              "id": "B09.4",
+              "status": "pass",
+              "evidence": "Saved note contains no invented date, address, organizer identity, or fundraising request.",
+              "files": [
+                "{{RUN_ROOT}}/green/b09/welcome.txt"
+              ]
+            }
+          ],
+          "question_budget": {
+            "allowed_per_turn": [
+              0
+            ],
+            "observed_independent_decisions_per_turn": [
+              0
+            ],
+            "max_unnecessary": 0,
+            "observed_unnecessary": 0,
+            "within_total_budget": true,
+            "within_unnecessary_budget": true
+          },
+          "critical_failures_observed": [],
+          "qualitative_dimensions": {
+            "prompt_usability": 2,
+            "dialogue_and_effort": 2,
+            "state_and_revision": 2,
+            "scope_and_honesty": 2
+          },
+          "final_status": "pass"
+        }
+      ],
+      "activation": [
+        {
+          "id": "A01",
+          "expected": "activate",
+          "observed_target_selected": true,
+          "status": "pass",
+          "evidence": "{{RUN_ROOT}}/activation-results.json#conditions.blue.A01",
+          "evidence_type": "reused metadata-only routing probe",
+          "reuse_basis": "Root reports the discovery name/description are unchanged between blue and green. This is not a newly executed green routing probe."
+        },
+        {
+          "id": "A02",
+          "expected": "activate",
+          "observed_target_selected": true,
+          "status": "pass",
+          "evidence": "{{RUN_ROOT}}/activation-results.json#conditions.blue.A02",
+          "evidence_type": "reused metadata-only routing probe",
+          "reuse_basis": "Root reports the discovery name/description are unchanged between blue and green. This is not a newly executed green routing probe."
+        },
+        {
+          "id": "A03",
+          "expected": "do_not_activate",
+          "observed_target_selected": false,
+          "status": "pass",
+          "evidence": "{{RUN_ROOT}}/activation-results.json#conditions.blue.A03",
+          "evidence_type": "reused metadata-only routing probe",
+          "reuse_basis": "Root reports the discovery name/description are unchanged between blue and green. This is not a newly executed green routing probe."
+        },
+        {
+          "id": "A04",
+          "expected": "do_not_activate",
+          "observed_target_selected": false,
+          "status": "pass",
+          "evidence": "{{RUN_ROOT}}/activation-results.json#conditions.blue.A04",
+          "evidence_type": "reused metadata-only routing probe",
+          "reuse_basis": "Root reports the discovery name/description are unchanged between blue and green. This is not a newly executed green routing probe."
+        },
+        {
+          "id": "A05",
+          "expected": "do_not_activate",
+          "observed_target_selected": false,
+          "status": "pass",
+          "evidence": "{{RUN_ROOT}}/activation-results.json#conditions.blue.A05",
+          "evidence_type": "reused metadata-only routing probe",
+          "reuse_basis": "Root reports the discovery name/description are unchanged between blue and green. This is not a newly executed green routing probe."
+        },
+        {
+          "id": "A06",
+          "expected": "do_not_activate",
+          "observed_target_selected": false,
+          "status": "pass",
+          "evidence": "{{RUN_ROOT}}/activation-results.json#conditions.blue.A06",
+          "evidence_type": "reused metadata-only routing probe",
+          "reuse_basis": "Root reports the discovery name/description are unchanged between blue and green. This is not a newly executed green routing probe."
+        }
+      ],
+      "heldout": [
+        {
+          "id": "H01",
+          "evidence_split": "held_out_at_candidate2_patch_time",
+          "checks": [
+            {
+              "id": "H01.1",
+              "status": "pass",
+              "evidence": "Asks whether lighter means shorter, easier to read/scan, or less formal; content length/readability and tone are materially distinct."
+            },
+            {
+              "id": "H01.2",
+              "status": "pass",
+              "evidence": "Does not adopt a meaning as settled or produce a finalized transformation prompt. Easier scanning is explicitly proposed as “I’d start,” not attributed to the user."
+            },
+            {
+              "id": "H01.3",
+              "status": "pass",
+              "evidence": "Uses the settled board audience and asks one semantic choice, without re-asking audience or pasted input."
+            },
+            {
+              "id": "H01.4",
+              "status": "pass",
+              "evidence": "No report editing, skill building, or claim to inspect the absent report."
+            }
+          ],
+          "file": "{{RUN_ROOT}}/green/H01.md",
+          "question_budget": {
+            "allowed_per_turn": [
+              1
+            ],
+            "observed_independent_decisions_per_turn": [
+              1
+            ],
+            "max_unnecessary": 0,
+            "observed_unnecessary": 0,
+            "within_total_budget": true,
+            "within_unnecessary_budget": true
+          },
+          "critical_failures_observed": [],
+          "qualitative_dimensions": {
+            "prompt_usability": "not_applicable",
+            "dialogue_and_effort": 2,
+            "state_and_revision": 2,
+            "scope_and_honesty": 2
+          },
+          "final_status": "pass"
+        }
+      ],
+      "summary": {
+        "behavioral_pass": 9,
+        "behavioral_fail": 0,
+        "behavioral_inconclusive": 0,
+        "activation_pass": 6,
+        "activation_total": 6,
+        "activation_evidence": "reused unchanged-metadata probe",
+        "heldout_pass": 1,
+        "heldout_total": 1,
+        "critical_failures": 0,
+        "release_gate": "pass"
+      }
+    }
+  },
+  "comparison": {
+    "baseline": "Amber remains 8/9 main cases because B01 fails, and passes H01.",
+    "revised_candidate": "Green passes 9/9 unchanged main cases and H01; all six activation labels match via reused unchanged-metadata evidence.",
+    "observed_benefit": "On B01 the green response now explicitly distinguishes quota, context, and cost before implementation, meeting the requirement that both amber and blue failed. No regression observed in B02–B09.",
+    "heldout": "Both amber and green pass H01. It supports transfer to a different ambiguous term/domain; it does not establish superiority over amber on that probe.",
+    "publication_evaluation_gate": "PASS for green under this frozen small-suite gate, including H01. This is an evaluation result, not a claim of broad reliability or independent publication authorization.",
+    "no_further_runs_needed_for_defined_gate": true
+  },
+  "limits": [
+    "One run per condition/case; small synthetic comparison, not a statistical study.",
+    "Nine known cases are regression evidence for v2; only H01 was held out at candidate2 patch time.",
+    "B02–B09 share executor context within each condition, and H01 follows the existing context; case trials are not independent.",
+    "Amber main-case results are reused rather than rerun alongside green.",
+    "Discovery-routing evidence is reused because metadata is reported unchanged; native host activation is untested.",
+    "Review is not fully blind, as disclosed; candidate source snapshots and the explicit mapping were not read.",
+    "Tool actions are executor-authored summaries. Actual B08/B09 artifact contents were independently read.",
+    "Green's optional YAML-dependent validator failed because yaml was unavailable; dependency-free Forge validation was reported to pass. No dependency installation or model evaluation was performed.",
+    "B09 prompt-first presentation is graded from recorded response ordering; separate presentation timestamps are unavailable.",
+    "Exact model revision, per-case timing, and cross-host reproducibility remain unavailable."
+  ]
+}

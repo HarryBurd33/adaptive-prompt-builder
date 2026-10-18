@@ -1,0 +1,9 @@
+# Execution protocol addendum
+
+The original rubric describes a suggested direct-prompt baseline and fresh contexts per case. The actual run instead uses the existing Skill Forge adaptive-prompt-builder example as the matched baseline, selected in the project brief before the suite was authored and recorded in run-freeze.json before execution. The domain checks, critical failures, question allowances, qualitative rubric, and release gate are unchanged.
+
+Both conditions use separate executor agents with identical inherited model/settings and the same tools and supplied inputs. B01's three user messages are revealed sequentially, preserving actual responses. B02–B09 are supplied as a batch of separate synthetic fixtures after B01. Cases within each condition therefore share one executor context; these are not independent per-case trials. Fixed histories remain authored fixtures. This is a small behavioral comparison, not a statistical study or a claim of cross-host reliability.
+
+One candidate executor briefly launched a child for text cases. The child was interrupted before parent case replies or domain artifacts existed; the parent was told to exclude any child output and execute the complete batch itself. The baseline was also instructed to use a single executor. Any child-produced files are excluded from grading and publication. The candidate actions record must disclose this correction.
+
+Activation is a separate metadata-only model routing probe with two descriptions in one routing context. It is not native host activation telemetry, nor the full stable-catalogue selection experiment suggested in the original rubric. Grade target-versus-nontarget routing, while retaining this limitation. No behavior or activation criteria are changed to accommodate an observed outcome.

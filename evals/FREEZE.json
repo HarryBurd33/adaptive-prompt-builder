@@ -1,0 +1,21 @@
+{
+  "suite_id": "adaptive-prompt-builder-2026-10-18-v1",
+  "status": "frozen_before_execution",
+  "freeze_date": "2026-10-18",
+  "case_counts": {
+    "behavioral": 9,
+    "activation": 6
+  },
+  "candidate_inspected_by_evaluation_designer": false,
+  "candidate_built_by_evaluation_designer": false,
+  "baseline_runs_performed": 0,
+  "candidate_runs_performed": 0,
+  "evidence_type": "authored evaluation design only",
+  "hash_algorithm": "sha256",
+  "files": {
+    "inputs.json": "1d343626a319df9a619ea06e39a4ada0cae87e3d019cfe6b91cb644b3bce54a2",
+    "cases.json": "9190b6c1226335078ac958d82edee12965c55c680b31c906c3fae7ff8108ae84",
+    "rubric.md": "02f53d7a266ae4f4b6d40f98ee1dcd26ce612ead833629b6af0bcdceb3d8a745",
+    "README.md": "0143b48434790bfe7d75c5467d596aa0bc613ba19b1f7aae59c1335713d71b4c"
+  }
+}

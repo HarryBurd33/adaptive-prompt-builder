@@ -1,0 +1,12 @@
+{
+  "id": "H01",
+  "suite_extension": "adaptive-prompt-builder-heldout-2026-10-18-v1",
+  "mode": "single_turn",
+  "provenance": "Authored synthetic input, frozen after candidate2 was reported frozen. No candidate source was inspected.",
+  "messages": [
+    {
+      "role": "user",
+      "content": "Help me refine a rough idea into a reusable prompt. I want it to make our monthly project report lighter before the board reviews it. The audience is the board, and I want the eventual prompt to work with a report I paste in. I have not supplied the report yet. Help me work out the idea first; do not edit a report or build anything."
+    }
+  ]
+}

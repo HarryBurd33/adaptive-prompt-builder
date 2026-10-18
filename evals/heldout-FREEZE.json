@@ -1,0 +1,9 @@
+{
+  "status": "frozen_before_execution",
+  "date": "2026-10-18",
+  "candidate_source_inspected": false,
+  "files": {
+    "heldout-input.json": "f1ba26e0aa1e1cb4faf8ace2b14e82c0aaeb09d09c728bfabde13a93324f85f3",
+    "heldout-criteria.json": "45bf215495bdd61ba4247cfd1100c1b76a03e2b37e9149c7f140a7b047516f05"
+  }
+}

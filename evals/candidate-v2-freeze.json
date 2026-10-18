@@ -1,0 +1,17 @@
+{
+  "frozen_at": "2026-10-18T17:33:46.433721+00:00",
+  "reason": "First candidate omitted explicit cost-budget interpretation in B01 first question; add a general rule for unpacking consequential ambiguous shorthand.",
+  "changed_files": [
+    "SKILL.md"
+  ],
+  "criteria_changed": false,
+  "candidate_count": 2,
+  "max_candidates": 3,
+  "files": {
+    "LICENSE": "8e51a3d1476cb7497704932e1511fc78c46c12ee900a121907ec178321cf7d28",
+    "SKILL.md": "15ad0aa8713027f6ba8d0f3c78c0c2630b4b857375db0d9e4056f3599eb78f71",
+    "references/artifact-contracts.md": "49bc2b8a352d75cb4cf4216d7d661b469bb8caf234142b7ee16304b66c311b76",
+    "references/skill-forge-handoff.md": "933e13c91922d392a33c04f29a1ed030de18b0353215ee358b104a44908a2038",
+    "templates/brief.md": "5aec6b992f94dced5920e766583553c4e612c26ba3fd26917ddb23533b9dfce8"
+  }
+}

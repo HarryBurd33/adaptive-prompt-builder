@@ -1,0 +1,172 @@
+{
+  "suite_id": "adaptive-prompt-builder-2026-10-18-v1",
+  "version": 1,
+  "provenance": "Authored synthetic test inputs. Fixed histories are fixtures, not observed model behavior. No evaluation runs have been performed.",
+  "execution_protocol": {
+    "behavioral": "Use the assigned baseline or skill guidance. For single_turn, answer the user once. For fixed_history, include the supplied history verbatim and answer the final user turn. For controlled_multiturn, start a fresh context, send each user turn in order, retain actual assistant responses, and do not replace those responses with authored text.",
+    "activation": "In a separate routing context, inspect the assigned skill discovery metadata and return the selected skill name, another skill name, or none for each message. Do not execute the domain task.",
+    "runtime_substitution": "Before B08 and B09, replace {{CASE_OUTPUT_DIR}} with a fresh absolute per-run, per-case directory inside the authorized output area. Create that directory. Pass only the substituted case input and the assigned guidance to the executor.",
+    "capture": "Save exact actual assistant messages, relevant tool actions, artifact paths, and errors. Record the case id and run label. Do not claim the supplied fixed histories are model outputs."
+  },
+  "behavioral": [
+    {
+      "id": "B01",
+      "title": "Low-usage checkpoint refinement",
+      "mode": "controlled_multiturn",
+      "turns": [
+        {
+          "role": "user",
+          "content": "I want to turn a rough idea into a reusable prompt. I want a checkpoint when usage is getting low so I can pick up later. Help me think it through. Do not build the checkpoint skill or set up an automation yet."
+        },
+        {
+          "role": "user",
+          "content": "By usage I mean remaining account quota, not conversation context or a spending budget. This would be in Codex. I would like the checkpoint to happen automatically, but I do not know whether the host supports that. For this exercise, treat automatic triggers as unverified and do not browse yet."
+        },
+        {
+          "role": "user",
+          "content": "Draft now using these decisions: use a manual check unless automatic threshold support is later verified; warn at 20% remaining account quota when a real reading is available; never guess quota. The checkpoint should capture the objective, settled decisions, completed work, open issues, relevant file paths, and the next action in Markdown that I can copy into a new chat. Audience: me resuming the work. Keep it compact. Deliver a self-contained prompt in this chat only, with any unresolved host details called out. Do not implement or run the checkpoint."
+        }
+      ]
+    },
+    {
+      "id": "B02",
+      "title": "Fully specified prompt request",
+      "mode": "single_turn",
+      "turns": [
+        {
+          "role": "user",
+          "content": "Give me the final standalone prompt, with no follow-up questions, for this task. The eventual assistant will turn pasted meeting notes into an internal one-page decision memo for operations managers deciding whether to run a two-week volunteer scheduling pilot. Output 450–600 words in Markdown in the chat. Use the sections Decision needed, Evidence, Options, Recommendation, and Open questions. Distinguish recorded facts from proposals; label missing data rather than inventing attendance, costs, dates, or agreement. The prompt must contain a clear placeholder for the notes and tell the assistant to explain one material tradeoff. Use a calm, direct tone. I need the prompt only; do not write the memo."
+        }
+      ]
+    },
+    {
+      "id": "B03",
+      "title": "Change document output to workbook",
+      "mode": "fixed_history",
+      "history": [
+        {
+          "role": "user",
+          "content": "Help me make a prompt for a new-hire onboarding handout. Audience: people managers. It should become a two-page Word document saved locally, with a supportive, plain-language tone. Use only the onboarding notes I supply. Do not invent policies or personal details. No macros or external uploads."
+        },
+        {
+          "role": "assistant",
+          "content": "Draft prompt: Turn the supplied onboarding notes into a supportive two-page Word handout for people managers. Save a local .docx file. Include a first-week checklist and mark missing policy details as open questions. Do not invent policy or personal details, use macros, or upload the result. Notes: [paste onboarding notes]."
+        }
+      ],
+      "turns": [
+        {
+          "role": "user",
+          "content": "Revise the prompt now. The deliverable is an Excel .xlsx workbook saved locally, and the audience is team coordinators. Use two sheets: People with columns Name, Start date, Coordinator; Tasks with columns Task, Owner, Due date, Status. Preserve the supportive plain-language tone, the onboarding purpose, and the limits about supplied facts, macros, and uploads. Leave unavailable cell values blank. Give me the complete revised prompt only; do not create the workbook."
+        }
+      ]
+    },
+    {
+      "id": "B04",
+      "title": "Challenge contradictory reliability claim",
+      "mode": "fixed_history",
+      "history": [
+        {
+          "role": "user",
+          "content": "We are refining a prompt for a weekly GitHub issue digest. Input is an issue export pasted into the chat. Output is Markdown in the chat, for maintainers. Use only that snapshot, mark missing data as unknown, and never post comments or change issues. Priorities come from labels present in the export."
+        },
+        {
+          "role": "assistant",
+          "content": "Settled: a maintainer digest in Markdown, based only on the supplied export; unknown data stays unknown; priorities follow supplied labels; no GitHub writes. We have not settled how to express coverage limits."
+        }
+      ],
+      "turns": [
+        {
+          "role": "user",
+          "content": "Go deeper before drafting. I need the prompt to guarantee that every critical issue is caught even when some issues are absent from the export, and set any unknown issue count to zero. Everything else stays as settled."
+        }
+      ]
+    },
+    {
+      "id": "B05",
+      "title": "Resume from compact state",
+      "mode": "single_turn",
+      "turns": [
+        {
+          "role": "user",
+          "content": "Resume this prompt-refinement session. Here is the saved state, not a request to start over.\nGoal: turn a weekly volunteer roster and work notes into a practical cleanup checklist so shift leads miss fewer tasks.\nSettled: audience is shift leads; source is pasted roster and notes; output is a Markdown table in this chat; columns are Task, Assigned role, Timing, Missing information; no names or contact details in output; do not invent assignments or policies; prompt first, no execution.\nUnresolved: should the checklist be ordered by time or by assigned role?\nLast draft already has the source placeholder and the four columns.\nPick up by exploring only that ordering decision, with one focused question."
+        }
+      ]
+    },
+    {
+      "id": "B06",
+      "title": "Draft now with open details",
+      "mode": "single_turn",
+      "turns": [
+        {
+          "role": "user",
+          "content": "I have a rough idea for a prompt that helps me plan a community workshop. Draft now. Use placeholders for the audience, workshop goal, duration, budget, and where the finished plan should go; do not make those facts up. I may refine it later. Give me a provisional prompt I can copy, not the workshop plan itself. No interview first."
+        }
+      ]
+    },
+    {
+      "id": "B07",
+      "title": "Self-contained Skill Forge handoff only",
+      "mode": "single_turn",
+      "turns": [
+        {
+          "role": "user",
+          "content": "We have finished refining this idea. Create only a self-contained handoff prompt that I can paste into Skill Forge to create a reusable skill; do not start building, installing, researching, or publishing it in this chat.\nSkill idea: turn a pasted CSV export of GitHub issues into a weekly maintainer digest. Activate only when the user requests this digest, not for ordinary issue edits. Inputs: exported number, title, status, labels, updated date, and optional assignee. Output: Markdown in the chat with Highlights, Blocked, Needs triage, and Data gaps. Use only supplied data; unknown stays unknown; never post to GitHub or change issues without a later explicit instruction. Quick mode should use sensible defaults; the skill should also support draft now and resume from a compact saved record.\nDelivery for the generated skill: a local installable folder, no publication. Success: a maintainer can identify the next triage actions and see gaps without fabricated counts. Include a small representative CSV example in the handoff. One unresolved design choice must remain visible: whether closed issues belong in Highlights. Recommend a default for that choice, but do not pretend I already chose it."
+        }
+      ]
+    },
+    {
+      "id": "B08",
+      "title": "Explicit handoff and actual Skill Forge build",
+      "mode": "single_turn",
+      "turns": [
+        {
+          "role": "user",
+          "content": "Use the prompt-refinement workflow to finish a self-contained handoff, then use Skill Forge to build it now. Do not stop after giving me a prompt to paste. All decisions below are settled; no questions are needed. For this controlled exercise, skip external foundation research and model evaluation.\nCreate a tiny reusable skill named agenda-tidier in {{CASE_OUTPUT_DIR}}/agenda-tidier. Its purpose is to turn rough meeting-agenda bullets into a concise agenda in Markdown in the chat. Audience: volunteer team leads. Activate for requests to tidy or structure an agenda; exclude meeting summaries and scheduling. Input: pasted agenda bullets. Preserve supplied topics, group duplicates, use a neutral tone, and mark missing owners or durations as unspecified. Do not invent decisions, attendees, dates, or commitments. Include a concise SKILL.md and one README example. Delivery is that local folder only; do not install or publish it. If the Skill Forge workflow is unavailable, state the limitation and give the complete handoff without claiming a build happened."
+        }
+      ]
+    },
+    {
+      "id": "B09",
+      "title": "Prompt followed by authorized local execution",
+      "mode": "single_turn",
+      "turns": [
+        {
+          "role": "user",
+          "content": "Quick: make a final prompt for a welcome note, then execute it now. The note is for first-time volunteers at a park cleanup. It should be warm and direct, 55–75 words, and must include the exact sentence: Bring water and sturdy shoes. Use [time] and [meeting point] because those details are missing. Do not invent a date, address, organizer, or fundraising request. First show the self-contained prompt, then write the resulting note as plain text to {{CASE_OUTPUT_DIR}}/welcome.txt and tell me where it is saved. Local file creation is authorized. No questions are needed."
+        }
+      ]
+    }
+  ],
+  "activation": [
+    {
+      "id": "A01",
+      "mode": "activation",
+      "message": "I have a vague idea for a prompt to compare volunteer scheduling options. Help me refine what I need through a few focused questions, then write the prompt."
+    },
+    {
+      "id": "A02",
+      "mode": "activation",
+      "message": "Improve this prompt so another assistant can use it independently: 'look at these notes and make it good.' The result should eventually be an Excel planning workbook. Help me settle the missing requirements first."
+    },
+    {
+      "id": "A03",
+      "mode": "activation",
+      "message": "Write a warm, two-sentence thank-you note to the volunteers who helped at the park cleanup."
+    },
+    {
+      "id": "A04",
+      "mode": "activation",
+      "message": "In Excel, fix this formula so blank due dates stay blank: =IF(C2<TODAY(),\"Overdue\",\"On track\")."
+    },
+    {
+      "id": "A05",
+      "mode": "activation",
+      "message": "Use Skill Forge to create a local skill named agenda-tidier that structures pasted agenda bullets. Use Markdown output, preserve the topics, and label missing owners as unspecified. Build it now."
+    },
+    {
+      "id": "A06",
+      "mode": "activation",
+      "message": "Take a checkpoint of our current work now: objective, decisions, completed work, open issues, file paths, and next action. Keep it compact so I can resume in another chat."
+    }
+  ]
+}
